@@ -1,0 +1,256 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: 'es' | 'en';
+  heading: string;
+  lead: string;
+  updatedLabel: string;
+  updated: string;
+  tocLabel: string;
+  toc: { id: string; title: string }[];
+  altHref: string;
+  altLabel: string;
+}
+
+const { title, description, lang, heading, lead, updatedLabel, updated, tocLabel, toc, altHref, altLabel } =
+  Astro.props;
+---
+
+<Base title={title} description={description} lang={lang} altHref={altHref} altLabel={altLabel}>
+  <main class="policy">
+    <div class="intro">
+      <p class="eyebrow">{updatedLabel} {updated}</p>
+      <h1>{heading}</h1>
+      <p class="lead">{lead}</p>
+    </div>
+
+    <div class="grid">
+      <nav class="toc" aria-label={tocLabel}>
+        <p class="toc-title">{tocLabel}</p>
+        <ol>
+          {toc.map((item) => (
+            <li>
+              <a href={`#${item.id}`}>{item.title}</a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+
+      <article class="content">
+        <slot />
+      </article>
+    </div>
+  </main>
+</Base>
+
+<style is:global>
+  .policy {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 1rem clamp(1rem, 4vw, 2rem) 4rem;
+  }
+
+  .intro {
+    max-width: 46rem;
+    padding-block: 2rem 2.5rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .intro h1 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .lead {
+    margin: 1.25rem 0 0;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 15rem minmax(0, 46rem);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .toc {
+    position: sticky;
+    top: calc(var(--topbar-height) + 1.5rem);
+    font-size: 0.92rem;
+  }
+
+  .toc-title {
+    margin: 0 0 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1.5px solid var(--line);
+  }
+
+  .toc a {
+    display: block;
+    padding: 0.3rem 0 0.3rem 0.9rem;
+    color: var(--muted);
+    text-decoration: none;
+    line-height: 1.35;
+  }
+
+  .toc a:hover {
+    color: var(--text);
+  }
+
+  .content section {
+    padding-block: 0.25rem 1.75rem;
+  }
+
+  .content section + section {
+    border-top: 1px solid var(--line);
+    padding-top: 1.75rem;
+  }
+
+  .content h2 {
+    margin: 0 0 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+
+  .content h3 {
+    margin: 1.25rem 0 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+  }
+
+  .content p,
+  .content ul {
+    margin: 0 0 0.9rem;
+  }
+
+  .content ul {
+    padding-left: 1.2rem;
+  }
+
+  .content li + li {
+    margin-top: 0.35rem;
+  }
+
+  .content strong {
+    font-weight: 800;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .summary li {
+    margin: 0 !important;
+    padding: 1rem 1.1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    line-height: 1.45;
+  }
+
+  .summary b {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--amber);
+    font-weight: 800;
+  }
+
+  .note {
+    padding: 1rem 1.1rem;
+    background: var(--bg-deep);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 0 0 1rem;
+  }
+
+  .content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .content th,
+  .content td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .content th {
+    font-weight: 800;
+    color: var(--muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 52rem) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .toc {
+      position: static;
+      padding: 1rem 1.1rem;
+      background: var(--bg-deep);
+      border-radius: 14px;
+    }
+
+    .toc ol {
+      border-left: 0;
+      columns: 2 12rem;
+    }
+
+    .toc a {
+      padding-left: 0;
+    }
+  }
+
+  @media print {
+    .toc,
+    .topbar .lang {
+      display: none;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

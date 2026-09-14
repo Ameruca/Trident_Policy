@@ -1,0 +1,213 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  lang: 'es' | 'en';
+  altHref?: string;
+  altLabel?: string;
+}
+
+const { title, description, lang, altHref, altLabel } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#00090E" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <link rel="preload" href="/fonts/Nunito-400.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-900.ttf" as="font" type="font/ttf" crossorigin />
+  </head>
+  <body>
+    <header class="topbar-header">
+      <div class="topbar">
+        <a class="brand" href="/">
+          <img src="/icon.png" alt="" width="36" height="36" />
+          <span>Trident</span>
+        </a>
+        {altHref && <a class="lang" href={altHref} hreflang={lang === 'es' ? 'en' : 'es'}>{altLabel}</a>}
+      </div>
+    </header>
+    <slot />
+
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-400.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-700.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Nunito';
+    src: url('/fonts/Nunito-800.ttf') format('truetype');
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-800.ttf') format('truetype');
+    font-weight: 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('/fonts/Montserrat-900.ttf') format('truetype');
+    font-weight: 900;
+    font-display: swap;
+  }
+
+  /* Paleta "Deep Space & Amber" de la app */
+  :root {
+    --bg: #00090e;
+    --bg-deep: #01131c;
+    --card: #012638;
+    --line: rgba(232, 244, 250, 0.12);
+    --text: #e8f4fa;
+    --muted: rgba(232, 244, 250, 0.72);
+    --amber: #ffb703;
+    --blue: #219ebc;
+    --orange: #fb8500;
+    --header-bg: rgba(0, 9, 14, 0.85);
+    --topbar-height: 4.25rem;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #faf6ec;
+      --bg-deep: #f1ead8;
+      --card: #ffffff;
+      --line: rgba(1, 38, 56, 0.14);
+      --text: #0f1c22;
+      --muted: rgba(15, 28, 34, 0.72);
+      --amber: #9a6500;
+      --blue: #11708a;
+      --orange: #b45f00;
+      --header-bg: rgba(250, 246, 236, 0.88);
+      color-scheme: light;
+    }
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--topbar-height) + 1.5rem);
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--amber);
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .topbar-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: var(--header-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0.85rem clamp(1rem, 4vw, 2rem);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+  }
+
+  .brand:hover {
+    opacity: 0.85;
+  }
+
+  .brand img {
+    border-radius: 9px;
+  }
+
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--bg-deep);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  }
+
+  .lang:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    transform: translateY(-1px);
+  }
+
+  @media print {
+    .topbar-header {
+      position: static;
+      background: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .lang {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,212 @@
+---
+import Policy from '../../layouts/Policy.astro';
+import { APP_NAME, DEVELOPER_NAME, CONTACT_EMAIL, ANDROID_PACKAGE, LAST_UPDATED } from '../../config';
+
+const toc = [
+  { id: 'summary', title: 'Summary' },
+  { id: 'controller', title: 'Who we are' },
+  { id: 'device', title: 'Data on your device' },
+  { id: 'ads', title: 'Advertising (Google AdMob)' },
+  { id: 'consent', title: 'Consent and controls' },
+  { id: 'permissions', title: 'App permissions' },
+  { id: 'age', title: 'Minimum age' },
+  { id: 'retention', title: 'Retention and deletion' },
+  { id: 'rights', title: 'Your rights' },
+  { id: 'security', title: 'Security' },
+  { id: 'changes', title: 'Changes' },
+  { id: 'contact', title: 'Contact' },
+];
+---
+
+<Policy
+  title={`Privacy Policy · ${APP_NAME}`}
+  description={`What data ${APP_NAME} uses, how advertising works and how to control your privacy.`}
+  lang="en"
+  heading="Privacy Policy"
+  lead={`${APP_NAME} has no accounts and no servers of its own. Your settings and games stay on your phone. The app is free thanks to Google ads, and this page explains what that means.`}
+  updatedLabel="Last updated:"
+  updated={LAST_UPDATED.en}
+  tocLabel="On this page"
+  toc={toc}
+  altHref="/privacidad"
+  altLabel="Español"
+>
+  <section id="summary">
+    <h2>Summary</h2>
+    <ul class="summary">
+      <li><b>No accounts</b>We never ask for your name, email, phone number or location.</li>
+      <li><b>All local</b>Settings and games are stored only on your device.</li>
+      <li><b>Google ads</b>Google AdMob may use device data to show ads.</li>
+      <li><b>You decide (Europe)</b>If you are in Europe, you can accept, reject or change your ad consent at any time.</li>
+    </ul>
+  </section>
+
+  <section id="controller">
+    <h2>Who we are</h2>
+    <p>
+      This policy applies to the <strong>{APP_NAME}</strong> app for Android
+      and iOS, developed by <strong>{DEVELOPER_NAME}</strong> ("we", "us"). For any privacy question, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+    </p>
+  </section>
+
+  <section id="device">
+    <h2>Data stored on your device</h2>
+    <p>
+      The app stores the following information <strong>only in your phone's local storage</strong>. We
+      do not receive it, it is not sent to any server and we cannot see it.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Data</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Preferences</td>
+            <td>Vibration, voice, animations, light or dark mode, numbers on tiles and dice, tile and dice themes.</td>
+          </tr>
+          <tr>
+            <td>Custom rules</td>
+            <td>The rule sets you create and which one is active.</td>
+          </tr>
+          <tr>
+            <td>Game in progress</td>
+            <td>Lets you resume an unfinished game. Cleared when you start a new one.</td>
+          </tr>
+          <tr>
+            <td>Game counters</td>
+            <td>Number of games and dice rolls, used to decide when to show an ad.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The voice feature uses the text-to-speech engine already built into your device. How it works
+      depends on your operating system and its provider, not on {APP_NAME}.
+    </p>
+  </section>
+
+  <section id="ads">
+    <h2>Advertising (Google AdMob)</h2>
+    <p>
+      {APP_NAME} shows ads from <strong>Google AdMob</strong> (a banner at the bottom of the screen and a
+      full-screen ad after some games). To serve, measure and protect these ads against fraud, the
+      Google SDK may collect and process, under its own policy:
+    </p>
+    <ul>
+      <li>Your device's <strong>advertising identifier</strong> (Android Advertising ID, or IDFA on iOS only if you allow it).</li>
+      <li>Your <strong>IP address</strong> and the <strong>approximate location</strong> derived from it.</li>
+      <li><strong>Technical device information</strong>: model, operating system, language, carrier and connection type.</li>
+      <li><strong>Ad interactions</strong>: impressions, clicks, performance and crash data.</li>
+    </ul>
+    <p>
+      We do not receive this data about individual users; we only see aggregated statistics in AdMob
+      (such as impressions and earnings). Google acts as an independent controller of that processing.
+      Learn more:
+    </p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a></li>
+      <li><a href="https://policies.google.com/technologies/partner-sites" rel="noopener">How Google uses information from apps that use its services</a></li>
+    </ul>
+  </section>
+
+  <section id="consent">
+    <h2>Consent and ad controls</h2>
+    <h3>European Economic Area, United Kingdom and Switzerland</h3>
+    <p>
+      The first time you open the app, we show a Google consent form (compatible with the IAB
+      Transparency and Consent Framework). You can <strong>accept</strong>, <strong>reject</strong> or
+      choose specific purposes. If you reject, the app works the same and only non-personalized or
+      limited ads can be shown.
+    </p>
+    <p>
+      You can change your choice at any time from <strong>Settings → Privacy → Ad consent</strong> inside the app.
+    </p>
+    <h3>iPhone and iPad</h3>
+    <p>
+      iOS will ask whether you allow tracking (App Tracking Transparency). If you don't, the IDFA is not
+      used. You can change this in <strong>Settings → Privacy &amp; Security → Tracking</strong>.
+    </p>
+    <h3>Android</h3>
+    <p>
+      You can reset or delete your advertising ID in <strong>Settings → Google → Ads</strong> (or <strong>Settings → Privacy → Ads</strong>, depending on the manufacturer).
+    </p>
+    <p>
+      You can also manage ad personalization for your Google account at <a href="https://myadcenter.google.com" rel="noopener">myadcenter.google.com</a>.
+    </p>
+  </section>
+
+  <section id="permissions">
+    <h2>App permissions</h2>
+    <ul>
+      <li><strong>Internet and network state</strong>: required to load ads.</li>
+      <li><strong>Vibration</strong>: for haptic feedback, if enabled.</li>
+      <li><strong>Keep screen on</strong>: so your phone doesn't lock during a game.</li>
+      <li><strong>Tracking (iOS only)</strong>: requested for personalized ads; you can deny it.</li>
+    </ul>
+    <p>The app does not access your camera, microphone, contacts, photos or precise location.</p>
+  </section>
+
+  <section id="age">
+    <h2>Minimum age</h2>
+    <p class="note">
+      {APP_NAME} includes game rules that refer to drinking alcohol. It is intended <strong>only for people aged 18 or older</strong>, or the legal drinking age in their country if
+      higher. Drink responsibly and never drink and drive.
+    </p>
+    <p>
+      The app is not directed at minors and we do not knowingly collect data from minors. If you
+      believe a minor is using the app, you can delete its data by uninstalling it and contact us if needed.
+    </p>
+  </section>
+
+  <section id="retention">
+    <h2>Retention and deletion</h2>
+    <p>
+      Local data is kept until you delete it. To remove all of it, <strong>uninstall the app</strong> or
+      clear its data from your device settings (Android: Settings → Apps → {APP_NAME} → Storage → Clear data).
+    </p>
+    <p>
+      Data processed by Google is retained according to its policy. Resetting your advertising ID
+      unlinks past activity from your device.
+    </p>
+  </section>
+
+  <section id="rights">
+    <h2>Your rights</h2>
+    <p>
+      Depending on where you live (for example, the GDPR in Europe or California privacy laws), you may
+      have the right to access, correct, delete or object to the processing of your data, to withdraw
+      consent and to lodge a complaint with a data protection authority.
+    </p>
+    <p>
+      Because we don't keep personal data on our own servers, the quickest way to exercise these rights
+      is through the controls described above. For data processed by Google, use Google's privacy
+      tools. If you have questions, email us and we'll help.
+    </p>
+    <p>We do not sell your personal data.</p>
+  </section>
+
+  <section id="security">
+    <h2>Security</h2>
+    <p>
+      Local data stays in the app's private storage, protected by the operating system. Communications
+      from Google's ads SDK are encrypted in transit.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2>Changes to this policy</h2>
+    <p>
+      If we change this policy, we will publish the new version on this page and update the "Last
+      updated" date. For significant changes, we will also let you know in the app.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      {DEVELOPER_NAME}<br />
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </p>
+  </section>
+</Policy>

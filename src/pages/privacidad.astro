@@ -1,0 +1,212 @@
+---
+import Policy from '../layouts/Policy.astro';
+import { APP_NAME, DEVELOPER_NAME, CONTACT_EMAIL, ANDROID_PACKAGE, LAST_UPDATED } from '../config';
+
+const toc = [
+  { id: 'resumen', title: 'Resumen' },
+  { id: 'responsable', title: 'Responsable' },
+  { id: 'dispositivo', title: 'Datos en tu dispositivo' },
+  { id: 'publicidad', title: 'Publicidad (Google AdMob)' },
+  { id: 'consentimiento', title: 'Consentimiento y control' },
+  { id: 'permisos', title: 'Permisos de la app' },
+  { id: 'edad', title: 'Edad mínima' },
+  { id: 'conservacion', title: 'Conservación y borrado' },
+  { id: 'derechos', title: 'Tus derechos' },
+  { id: 'seguridad', title: 'Seguridad' },
+  { id: 'cambios', title: 'Cambios' },
+  { id: 'contacto', title: 'Contacto' },
+];
+---
+
+<Policy
+  title={`Política de privacidad · ${APP_NAME}`}
+  description={`Qué datos usa ${APP_NAME}, cómo funciona la publicidad y cómo controlar tu privacidad.`}
+  lang="es"
+  heading="Política de privacidad"
+  lead={`${APP_NAME} no tiene cuentas ni servidores propios. Tus ajustes y partidas se quedan en tu teléfono. La app es gratuita gracias a anuncios de Google.`}
+  updatedLabel="Última actualización:"
+  updated={LAST_UPDATED.es}
+  tocLabel="En esta página"
+  toc={toc}
+  altHref="/en/privacy"
+  altLabel="English"
+>
+  <section id="resumen">
+    <h2>Resumen</h2>
+    <ul class="summary">
+      <li><b>Sin cuentas</b>No te pedimos nombre, correo, teléfono ni ubicación.</li>
+      <li><b>Todo local</b>Ajustes y partidas se guardan solo en tu dispositivo.</li>
+      <li><b>Anuncios de Google</b>Google AdMob puede usar datos del dispositivo para mostrar anuncios.</li>
+      <li><b>Tú decides (Europa)</b>Si estás en Europa, puedes aceptar, rechazar o cambiar tu consentimiento de anuncios cuando quieras.</li>
+    </ul>
+  </section>
+
+  <section id="responsable">
+    <h2>Responsable</h2>
+    <p>
+      Esta política se aplica a la aplicación <strong>{APP_NAME}</strong> para Android
+      e iOS, desarrollada por <strong>{DEVELOPER_NAME}</strong> («nosotros»). Para cualquier consulta sobre privacidad escribir a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+    </p>
+  </section>
+
+  <section id="dispositivo">
+    <h2>Datos que se guardan en tu dispositivo</h2>
+    <p>
+      La app guarda la siguiente información <strong>únicamente en el almacenamiento local de tu
+      teléfono</strong>. Nosotros no la recibimos, no la enviamos a ningún servidor y no podemos verla.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Dato</th><th>Para qué sirve</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Preferencias</td>
+            <td>Vibración, voz, animaciones, modo claro u oscuro, números en fichas y dados, temas de fichas y dados.</td>
+          </tr>
+          <tr>
+            <td>Reglas personalizadas</td>
+            <td>Los conjuntos de reglas que creas y cuál está activo.</td>
+          </tr>
+          <tr>
+            <td>Partida en curso</td>
+            <td>Permite continuar una partida a medias. Se borra al empezar una nueva.</td>
+          </tr>
+          <tr>
+            <td>Contadores de juego</td>
+            <td>Número de partidas y tiradas, para decidir cuándo mostrar un anuncio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      La función de voz usa el motor de texto a voz que ya viene en tu dispositivo. Su funcionamiento
+      depende del sistema operativo y de su proveedor, no de {APP_NAME}.
+    </p>
+  </section>
+
+  <section id="publicidad">
+    <h2>Publicidad (Google AdMob)</h2>
+    <p>
+      {APP_NAME} muestra anuncios de <strong>Google AdMob</strong> (un banner en la parte inferior y un
+      anuncio a pantalla completa al terminar algunas partidas). Para mostrar, medir y proteger estos
+      anuncios contra el fraude, el SDK de Google puede recopilar y tratar, según su propia política:
+    </p>
+    <ul>
+      <li>El <strong>identificador de publicidad</strong> del dispositivo (ID de publicidad de Android o IDFA en iOS, este último solo si das permiso).</li>
+      <li>La <strong>dirección IP</strong> y la <strong>ubicación aproximada</strong> que se deduce de ella.</li>
+      <li><strong>Información técnica</strong> del dispositivo: modelo, sistema operativo, idioma, operador y tipo de conexión.</li>
+      <li><strong>Interacciones con los anuncios</strong>: impresiones, clics y datos de rendimiento y fallos.</li>
+    </ul>
+    <p>
+      Nosotros no recibimos estos datos de forma individual; solo vemos estadísticas agregadas en
+      AdMob (por ejemplo, número de impresiones e ingresos). Google actúa como responsable
+      independiente de ese tratamiento. Más información:
+    </p>
+    <ul>
+      <li><a href="https://policies.google.com/privacy" rel="noopener">Política de privacidad de Google</a></li>
+      <li><a href="https://policies.google.com/technologies/partner-sites" rel="noopener">Cómo usa Google la información de las apps que utilizan sus servicios</a></li>
+    </ul>
+  </section>
+
+  <section id="consentimiento">
+    <h2>Consentimiento y control de los anuncios</h2>
+    <h3>Espacio Económico Europeo, Reino Unido y Suiza</h3>
+    <p>
+      Al abrir la app por primera vez te mostramos un formulario de consentimiento de Google
+      (compatible con el Marco de Transparencia y Consentimiento de IAB). Puedes <strong>aceptar</strong>, <strong>rechazar</strong> o elegir finalidades concretas. Si rechazas, la app funciona igual y
+      solo se pueden mostrar anuncios no personalizados o limitados.
+    </p>
+    <p>
+      Puedes cambiar tu decisión en cualquier momento desde <strong>Configuración → Privacidad → Consentimiento de anuncios</strong> dentro de la app.
+    </p>
+    <h3>iPhone y iPad</h3>
+    <p>
+      iOS te preguntará si permites el rastreo (App Tracking Transparency). Si no lo permites, no se
+      usa el IDFA. Puedes cambiarlo en <strong>Ajustes → Privacidad y seguridad → Rastreo</strong>.
+    </p>
+    <h3>Android</h3>
+    <p>
+      Puedes restablecer o eliminar tu ID de publicidad en <strong>Ajustes → Google → Anuncios</strong> (o <strong>Ajustes → Privacidad → Anuncios</strong>,
+      según el fabricante).
+    </p>
+    <p>
+      También puedes gestionar la personalización de anuncios de tu cuenta de Google en <a href="https://myadcenter.google.com" rel="noopener">myadcenter.google.com</a>.
+    </p>
+  </section>
+
+  <section id="permisos">
+    <h2>Permisos de la app</h2>
+    <ul>
+      <li><strong>Internet y estado de la red</strong>: necesarios para cargar los anuncios.</li>
+      <li><strong>Vibración</strong>: para la respuesta háptica, si la tienes activada.</li>
+      <li><strong>Mantener la pantalla encendida</strong>: para que el teléfono no se bloquee durante la partida.</li>
+      <li><strong>Rastreo (solo iOS)</strong>: se solicita para anuncios personalizados y puedes denegarlo.</li>
+    </ul>
+    <p>La app no accede a tu cámara, micrófono, contactos, fotos ni ubicación precisa.</p>
+  </section>
+
+  <section id="edad">
+    <h2>Edad mínima</h2>
+    <p class="note">
+      {APP_NAME} incluye reglas de juego que hacen referencia al consumo de alcohol. Está dirigida <strong>exclusivamente a personas mayores de 18 años</strong> o de la edad legal para consumir
+      alcohol en su país, si es mayor. Bebe con responsabilidad y nunca conduzcas después de beber.
+    </p>
+    <p>
+      No está dirigida a menores y no recopilamos a sabiendas datos de menores. Si crees que un menor
+      está usando la app, puedes borrar sus datos desinstalándola y contactarnos si lo necesitas.
+    </p>
+  </section>
+
+  <section id="conservacion">
+    <h2>Conservación y borrado de datos</h2>
+    <p>
+      Los datos locales se conservan hasta que los borras. Para eliminarlos todos, <strong>desinstala la app</strong> o borra sus datos desde los ajustes de tu dispositivo
+      (Android: Ajustes → Aplicaciones → {APP_NAME} → Almacenamiento → Borrar datos).
+    </p>
+    <p>
+      Los datos que trata Google se conservan según su política. Restablecer tu ID de publicidad
+      desvincula la actividad anterior de tu dispositivo.
+    </p>
+  </section>
+
+  <section id="derechos">
+    <h2>Tus derechos</h2>
+    <p>
+      Según tu país (por ejemplo, el RGPD en Europa o las leyes de privacidad de California), puedes
+      tener derecho a acceder, rectificar, borrar u oponerte al tratamiento de tus datos, a retirar tu
+      consentimiento y a presentar una reclamación ante la autoridad de protección de datos.
+    </p>
+    <p>
+      Como no guardamos datos personales en servidores propios, la forma más rápida de ejercerlos es
+      usar los controles descritos arriba. Para los datos tratados por Google, puedes usar sus
+      herramientas de privacidad. Si tienes dudas, escríbenos y te ayudamos.
+    </p>
+    <p>No vendemos tus datos personales.</p>
+  </section>
+
+  <section id="seguridad">
+    <h2>Seguridad</h2>
+    <p>
+      Los datos locales permanecen en el almacenamiento privado de la app, protegido por el sistema
+      operativo. Las comunicaciones del SDK de anuncios de Google se cifran en tránsito.
+    </p>
+  </section>
+
+  <section id="cambios">
+    <h2>Cambios en esta política</h2>
+    <p>
+      Si cambiamos esta política, publicaremos la nueva versión en esta página y actualizaremos la
+      fecha de «Última actualización». Si los cambios son importantes, también lo indicaremos en la app.
+    </p>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>
+      {DEVELOPER_NAME}<br />
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+    </p>
+  </section>
+</Policy>
